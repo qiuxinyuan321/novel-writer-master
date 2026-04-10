@@ -3,33 +3,31 @@
 <!-- 古风标题区 -->
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║          ████  █  █  ████  █  █  █████  █                    ║
-║          █   █ █  █  █   █ █  █  █      █                    ║
-║          █   █ █  █  █   █ █  █  ████   █                    ║
-║          █   █ █  █  █   █ █  █  █      █                    ║
-║          ████  ████  ████  ████  █████  █████                ║
-║                                                              ║
-║                 ╭─────────────────────╮                      ║
-║                 │   笔 · 墨 · 丹 · 青  │                      ║
-║                 ╰─────────────────────╯                      ║
-║                                                              ║
-║          ─── AI 辅助小说写作 · 内置降 AI 率引擎 ───           ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║                                                                  ║
+║           小  说  伴  写  大  师                                  ║
+║           Novel   Writer  Master                                 ║
+║                                                                  ║
+║                 ╭─────────────────────╮                          ║
+║                 │   笔 · 墨 · 丹 · 青  │                          ║
+║                 ╰─────────────────────╯                          ║
+║                                                                  ║
+║          ─── AI 辅助小说写作 · 内置降 AI 率引擎 ───               ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
 ```
 
 <br>
 
-**「工欲善其事，必先利其器。笔墨纸砚之外，今有 NovelCraft。」**
+**「工欲善其事，必先利其器。笔墨纸砚之外，今有伴写大师。」**
 
 <br>
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-DAA520?style=for-the-badge)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-8B4513?style=for-the-badge)](https://github.com/qiuxinyuan321/novel-craft/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-8B4513?style=for-the-badge)](https://github.com/qiuxinyuan321/novel-writer-master/pulls)
 
 </div>
 
@@ -88,8 +86,8 @@ AI 虽千变万化，不出方寸之间。
 
 ```bash
 # 一、克隆仓库
-git clone https://github.com/qiuxinyuan321/novel-craft.git
-cd novel-craft
+git clone https://github.com/qiuxinyuan321/novel-writer-master.git
+cd novel-writer-master
 
 # 二、安装依赖
 pip install -e .
@@ -98,7 +96,7 @@ pip install -e .
 cp config.example.yaml config.yaml
 
 # 四、启动
-streamlit run src/novel_craft/ui/app.py
+streamlit run src/novel_writer/ui/app.py
 ```
 
 打开浏览器访问 `http://localhost:8501`，开始创作。
@@ -197,7 +195,7 @@ llm:
 
 > **「大巧若拙，大辩若讷。」** —— 让 AI 之文，不着 AI 之痕。
 
-现有的 AI 小说工具几乎没有内置降 AI 率能力。NovelCraft 的 Anti-Slop 引擎是核心差异化，专为通过**朱雀 AI 检测**设计。
+现有的 AI 小说工具几乎没有内置降 AI 率能力。小说伴写大师的 Anti-Slop 引擎是核心差异化，专为通过**朱雀 AI 检测**设计。
 
 ### 三阶段工作流
 

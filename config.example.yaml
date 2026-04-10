@@ -83,7 +83,7 @@ anti_slop:
 
 # === 数据目录 ===
 data:
-  db_path: "data/novel_craft.db"
+  db_path: "data/novel_writer.db"
   chroma_path: "data/chroma"
 
 # === 服务器 ===

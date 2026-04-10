@@ -1,5 +1,5 @@
 [project]
-name = "novel-craft"
+name = "novel-writer-master"
 version = "0.1.0"
 description = "AI-assisted novel writing tool with built-in anti-AI-detection engine"
 readme = "README.md"
@@ -25,14 +25,14 @@ export = ["python-docx>=1.1.0"]
 dev = ["pytest>=8.0.0", "pytest-asyncio>=0.24.0", "ruff>=0.8.0"]
 
 [project.scripts]
-novel-craft = "novel_craft.ui.app:main"
+novel-writer-master = "novel_writer.ui.app:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/novel_craft"]
+packages = ["src/novel_writer"]
 
 [tool.ruff]
 target-version = "py311"
