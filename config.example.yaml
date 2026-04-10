@@ -57,9 +57,10 @@ modules:
     - bible
     - outline
     - generation
-    # - consistency
-    # - export
-    # - emotion_chart
+    - consistency
+    - dashboard
+    - export
+    - settings
 
 # === Anti-Slop 配置 ===
 anti_slop:

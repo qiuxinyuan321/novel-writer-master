@@ -16,8 +16,13 @@ class ConsistencyModule(Module):
     def description(self) -> str:
         return "LLM 驱动的角色行为/世界观/时间线一致性检查"
 
+    @property
+    def dependencies(self) -> list[str]:
+        return ["project", "bible"]
+
     def get_pages(self) -> list[PageDef]:
-        return []  # 暂不提供独立页面，集成在写作台中
+        from novel_craft.modules.consistency.ui import render_consistency_page
+        return [PageDef(title="一致性检查", icon="🔎", render=render_consistency_page, order=55)]
 
 
 def create_module() -> ConsistencyModule:
