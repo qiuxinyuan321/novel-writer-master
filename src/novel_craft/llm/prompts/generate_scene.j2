@@ -1,0 +1,72 @@
+你是一位经验丰富的{{ style_reference or '中文小说' }}作家。请根据以下信息生成一个场景的正文。
+
+## 基本信息
+- 小说: 《{{ novel_title }}》 ({{ genre }})
+- 当前章节: 第{{ chapter_number }}章 {{ chapter_title }}
+- 当前场景: {{ scene_title }}
+
+## 叙事目标
+{{ narrative_goal }}
+
+{% if emotion_target %}
+## 目标情绪氛围
+{{ emotion_target }}
+{% endif %}
+
+{% if checkpoints %}
+## 检查点约束（必须在本场景中实现）
+{% for cp in checkpoints %}
+- {{ cp.description }}{% if cp.is_mandatory %} [必须]{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if characters %}
+## 出场角色
+{% for char in characters %}
+### {{ char.name }} ({{ char.role }})
+- 性格: {{ char.profile.get('personality', '未设定') }}
+{% if char.speech_style %}
+- 语气: {{ char.speech_style.get('tone', '中性') }}
+- 方言: {{ char.speech_style.get('dialect', '普通话') }}
+{% if char.speech_style.get('catchphrases') %}
+- 口头禅: {{ char.speech_style.catchphrases | join('、') }}
+{% endif %}
+{% if char.speech_style.get('forbidden_words') %}
+- 禁用词（此角色绝不会说）: {{ char.speech_style.forbidden_words | join('、') }}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if world_settings %}
+## 相关世界观设定
+{% for ws in world_settings %}
+- [{{ ws.category }}] {{ ws.key }}: {{ ws.content }}
+{% endfor %}
+{% endif %}
+
+{% if foreshadowings %}
+## 待回收的伏笔（请在本场景中自然地呼应）
+{% for fs in foreshadowings %}
+- {{ fs.content }}（埋设于第{{ fs.plant_chapter }}章）
+{% endfor %}
+{% endif %}
+
+{% if previous_summary %}
+## 前文摘要
+{{ previous_summary }}
+{% endif %}
+
+{% if previous_ending %}
+## 上一场景结尾（请自然衔接）
+---
+{{ previous_ending }}
+---
+{% endif %}
+
+{% include 'anti_slop_rules.j2' %}
+
+## 输出要求
+- 直接输出小说正文，不要输出标题、章节号或其他元信息
+- 字数约 {{ target_words or '1000-2000' }} 字
+- 严格遵守上述写作风格规则和角色口癖设定

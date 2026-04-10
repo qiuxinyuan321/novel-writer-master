@@ -24,6 +24,9 @@ def get_engine():
     """获取数据库引擎（延迟初始化）."""
     global _engine
     if _engine is None:
+        # 导入所有模型确保 metadata 注册
+        import novel_craft.models  # noqa: F401
+
         config = get_config()
         db_path = Path(config.db_path)
         db_path.parent.mkdir(parents=True, exist_ok=True)
@@ -36,12 +39,17 @@ def get_session_factory():
     """获取 Session 工厂."""
     global _session_factory
     if _session_factory is None:
-        _session_factory = sessionmaker(bind=get_engine())
+        _session_factory = sessionmaker(bind=get_engine(), expire_on_commit=False)
     return _session_factory
 
 
 def get_session() -> Session:
-    """获取一个新的数据库会话."""
+    """获取一个新的数据库会话.
+
+    返回的 session 对象不是 context manager，
+    需要手动调用 session.close() 或用作普通对象。
+    expire_on_commit=False 确保 commit 后属性仍可访问。
+    """
     return get_session_factory()()
 
 
