@@ -1,0 +1,91 @@
+# NovelCraft 配置文件
+# 复制为 config.yaml 并填入你的 API Key
+
+# === LLM 配置 ===
+llm:
+  default_provider: "claude"
+
+  providers:
+    # Anthropic Claude（推荐用于正文生成和改写）
+    claude:
+      base_url: "https://api.anthropic.com"
+      api_key: "sk-your-key-here"
+      model: "claude-sonnet-4-20250514"
+      max_tokens: 8192
+
+    # OpenAI GPT
+    # openai:
+    #   base_url: "https://api.openai.com/v1"
+    #   api_key: "sk-your-key-here"
+    #   model: "gpt-4o"
+    #   max_tokens: 4096
+
+    # DeepSeek（便宜，适合摘要/检查任务）
+    # deepseek:
+    #   base_url: "https://api.deepseek.com/v1"
+    #   api_key: "sk-your-key-here"
+    #   model: "deepseek-chat"
+    #   max_tokens: 8192
+
+    # Ollama 本地模型
+    # ollama:
+    #   base_url: "http://localhost:11434/v1"
+    #   api_key: "ollama"
+    #   model: "qwen2.5:14b"
+    #   max_tokens: 4096
+
+    # 自定义 Provider（任何 OpenAI 兼容接口）
+    # custom:
+    #   base_url: "https://your-proxy.com/v1"
+    #   api_key: "your-key"
+    #   model: "your-model"
+    #   max_tokens: 4096
+
+  # 模型路由：不同任务可用不同 Provider（可选）
+  routing:
+    generation: "claude"
+    rewrite: "claude"
+    summary: "claude"
+    consistency_check: "claude"
+    outline_assist: "claude"
+
+# === 模块配置 ===
+modules:
+  enabled:
+    - anti_slop
+    - project
+    - bible
+    - outline
+    - generation
+    # - consistency
+    # - export
+    # - emotion_chart
+
+# === Anti-Slop 配置 ===
+anti_slop:
+  # 评分指标权重（总和应为 1.0）
+  weights:
+    blacklist_density: 0.30
+    ttr: 0.25
+    sentence_variance: 0.20
+    structure_pattern: 0.15
+    repetition: 0.10
+
+  # 风险阈值
+  thresholds:
+    low: 0.3       # < 0.3 = 低风险
+    medium: 0.6     # 0.3-0.6 = 中风险
+    high: 0.6       # > 0.6 = 高风险
+
+  # 改写最大循环次数
+  max_rewrite_rounds: 2
+
+# === 数据目录 ===
+data:
+  db_path: "data/novel_craft.db"
+  chroma_path: "data/chroma"
+
+# === 服务器 ===
+server:
+  host: "0.0.0.0"
+  port: 8501

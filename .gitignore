@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual env
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Data (用户数据不提交)
+data/*.db
+data/chroma/
+
+# Config (含 API Key)
+config.yaml
+.env
+
+# OS
+.DS_Store
+Thumbs.db
